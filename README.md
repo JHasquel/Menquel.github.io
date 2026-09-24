@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menquel Digital Industries</title>
+  <title>Menquel Digital Services</title>
   <!-- Ícones do FontAwesome para redes sociais e WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -341,7 +341,7 @@
 
   <!-- Cabeçalho -->
   <header>
-    <h1>MENQUEL DIGITAL INDUSTRIES</h1>
+    <h1>MENQUEL DIGITAL SERVICES</h1>
     <nav>
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
@@ -362,7 +362,7 @@
     <h2>Apresentação</h2>
     <div class="card-interativo">
       <h3>Sobre Nossa Empresa</h3>
-      <p>Visando a melhoria de apresentações para pessoas autônomas e empresas, nós da <b>Menquel Digital Industries</b> oferecemos soluções personalizadas para estruturar modelos intuitivos e funcionais de acordo com suas necessidades.</p>
+      <p>Visando a melhoria de apresentações para pessoas autônomas e empresas, nós da <b>Menquel Digital Services</b> oferecemos soluções personalizadas para estruturar modelos intuitivos e funcionais de acordo com suas necessidades.</p>
       
       <button class="btn-toggle" onclick="alternarTexto()">Expandir Detalhes</button>
       
@@ -491,7 +491,7 @@
 
   <!-- Rodapé -->
   <footer>
-    <p>&copy; 2026 - Jean Hasquel - Menquel Digital Industries. Todos os direitos reservados.</p>
+    <p>&copy; 2026 - Jean Hasquel - Menquel Digital Services. Todos os direitos reservados.</p>
   </footer>
 
   <!-- JavaScript -->
