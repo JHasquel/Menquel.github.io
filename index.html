@@ -142,6 +142,43 @@
       margin-top: 1rem;
     }
 
+    .processo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .processo-item {
+      padding: 1.5rem;
+      border-top: 2px solid var(--cor-azul);
+      background: rgba(25, 33, 36, 0.72);
+    }
+
+    .processo-numero {
+      display: block;
+      color: var(--cor-destaque);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .processo-item h3 { margin-bottom: 0.5rem; }
+    .processo-item p { color: var(--cor-suave); }
+
+    .cta-final {
+      max-width: 1000px;
+      margin: 2rem auto 0;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(199,243,107,0.35);
+      background: linear-gradient(110deg, rgba(199,243,107,0.12), rgba(78,214,232,0.08));
+      text-align: center;
+    }
+
+    .cta-final h2 { border: 0; margin-bottom: 0.5rem; }
+    .cta-final p { color: var(--cor-suave); margin-bottom: 1.2rem; }
+
     .card-servico i {
       font-size: 2rem;
       margin-bottom: 1rem;
@@ -342,7 +379,74 @@
       border-radius: 8px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       object-fit: contain;
+      transform: scale(1);
+      transition: transform 0.2s ease;
+      cursor: zoom-in;
     }
+
+    .modal-painel {
+      position: absolute;
+      left: 50%;
+      bottom: 3.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transform: translateX(-50%);
+    }
+
+    .modal-painel button {
+      min-width: 2.2rem;
+      height: 2.2rem;
+      padding: 0 0.6rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .modal-painel button:hover,
+    .modal-painel button:focus-visible { background: var(--cor-destaque); color: #050505; }
+
+    .modal-legenda {
+      position: absolute;
+      top: 1.5rem;
+      left: 50%;
+      color: #ffffff;
+      font-weight: 600;
+      transform: translateX(-50%);
+    }
+
+    .modal-miniaturas {
+      position: absolute;
+      bottom: 0.8rem;
+      left: 50%;
+      display: flex;
+      gap: 0.5rem;
+      max-width: 90%;
+      overflow-x: auto;
+      padding: 0.2rem;
+      transform: translateX(-50%);
+    }
+
+    .modal-miniatura {
+      width: 3.5rem;
+      height: 2.5rem;
+      flex: 0 0 auto;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      overflow: hidden;
+      background: transparent;
+      cursor: pointer;
+      opacity: 0.65;
+    }
+
+    .modal-miniatura.ativa,
+    .modal-miniatura:hover,
+    .modal-miniatura:focus-visible { border-color: var(--cor-destaque); opacity: 1; }
+    .modal-miniatura img { width: 100%; height: 100%; object-fit: cover; }
 
     .modal-navegacao {
       position: absolute;
@@ -498,6 +602,8 @@
       .hero h2 { font-size: clamp(3rem, 16vw, 5rem); }
       .hero p { font-size: 1rem; }
       .hero::after { right: 0; bottom: 3rem; font-size: 7rem; }
+      .processo { grid-template-columns: 1fr; }
+      .cta-final { margin-inline: 1rem; padding-inline: 1rem; }
     }
   </style>
 </head>
@@ -510,6 +616,7 @@
       <a href="#inicio">Início</a>
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
       <a href="#galeria">Projetos</a>
       <a href="#faq">Dúvidas</a>
       <a href="#contato">Contato</a>
@@ -521,7 +628,7 @@
     <div class="hero-conteudo">
       <p class="hero-kicker">Estratégia · Design · Tecnologia</p>
       <h2>Ideias que ganham <span>forma digital.</span></h2>
-      <p>Criamos experiências visuais, apresentações web e ferramentas interativas para transformar projetos em algo claro, útil e memorável.</p>
+      <p>Sites, dashboards e apresentações digitais para empresas que precisam comunicar melhor, organizar processos e transformar ideias em oportunidades.</p>
       <div class="hero-acoes">
         <a class="btn-hero" href="#galeria">Explorar projetos <i class="fa-solid fa-arrow-right"></i></a>
         <a class="btn-hero secundario" href="#contato">Falar com a equipe</a>
@@ -557,26 +664,48 @@
       <div class="card-servico">
         <i class="fa-solid fa-chart-line"></i>
         <h3>Dashboards & Relatórios</h3>
-        <p>Desenvolvimento de painéis interativos e visualização de dados para acompanhar métricas e otimizar a tomada de decisões.</p>
+        <p>Visualize os dados do seu negócio em painéis claros para acompanhar métricas e tomar decisões com mais segurança.</p>
       </div>
 
       <div class="card-servico">
         <i class="fa-solid fa-globe"></i>
         <h3>Apresentações Web</h3>
-        <p>Criação de páginas personalizadas, portfólios e páginas de captura modernas, responsivas e intuitivas.</p>
+        <p>Apresente sua empresa com uma página responsiva, profissional e preparada para transformar visitas em contatos.</p>
       </div>
 
       <div class="card-servico">
         <i class="fa-solid fa-sitemap"></i>
         <h3>Mapeamento de Processos</h3>
-        <p>Estruturação de Procedimentos Operacionais Padrão (POP), fluxogramas e checklists visuais para equipes.</p>
+        <p>Organize tarefas, responsabilidades e rotinas com fluxos visuais que facilitam o trabalho da sua equipe.</p>
       </div>
 
       <div class="card-servico">
         <i class="fa-solid fa-headphones"></i>
         <h3>Comunicação por Proximidade <b>NFC</b></h3>
-        <p>Implementação de soluções de comunicação baseadas em tecnologia NFC para interação próxima e transferência de dados.</p>
+        <p>Conecte materiais físicos a conteúdos digitais e facilite o acesso a informações por aproximação.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section id="processo">
+    <h2>Como funciona</h2>
+    <div class="processo">
+      <article class="processo-item">
+        <span class="processo-numero">01 / DIAGNÓSTICO</span>
+        <h3>Entendemos o objetivo</h3>
+        <p>Você conta o que precisa melhorar, comunicar ou organizar.</p>
+      </article>
+      <article class="processo-item">
+        <span class="processo-numero">02 / SOLUÇÃO</span>
+        <h3>Desenhamos o caminho</h3>
+        <p>Definimos a melhor estrutura visual e funcional para o projeto.</p>
+      </article>
+      <article class="processo-item">
+        <span class="processo-numero">03 / ENTREGA</span>
+        <h3>Colocamos no ar</h3>
+        <p>Você acompanha a construção e recebe uma solução pronta para usar.</p>
+      </article>
     </div>
   </section>
 
@@ -586,37 +715,37 @@
     <div class="galeria">
       <div class="galeria-item">
         <button class="galeria-botao" type="button" onclick="abrirModal(0)" aria-label="Abrir projeto Dashboard">
-          <img src="https://i.imgur.com/gX9CkiE.png" alt="Projeto Dashboard">
+          <img src="https://i.imgur.com/gX9CkiE.png" alt="Projeto Dashboard" loading="lazy">
           <span class="galeria-legenda">Projeto Dashboard</span>
         </button>
       </div>
       <div class="galeria-item">
         <button class="galeria-botao" type="button" onclick="abrirModal(1)" aria-label="Abrir projeto Apresentação">
-          <img src="https://i.imgur.com/LqMUgT2.png" alt="Projeto Apresentação">
+          <img src="https://i.imgur.com/LqMUgT2.png" alt="Projeto Apresentação" loading="lazy">
           <span class="galeria-legenda">Projeto Apresentação</span>
         </button>
       </div>
       <div class="galeria-item">
         <button class="galeria-botao" type="button" onclick="abrirModal(2)" aria-label="Abrir projeto Processos">
-          <img src="https://i.imgur.com/608s1qm.png" alt="Projeto Processos">
+          <img src="https://i.imgur.com/608s1qm.png" alt="Projeto Processos" loading="lazy">
           <span class="galeria-legenda">Projeto Processos</span>
         </button>
       </div>
       <div class="galeria-item">
         <button class="galeria-botao" type="button" onclick="abrirModal(3)" aria-label="Abrir projeto Comunicação">
-          <img src="https://i.imgur.com/Sh51BU8.png" alt="Projeto Comunicação">
+          <img src="https://i.imgur.com/Sh51BU8.png" alt="Projeto Comunicação" loading="lazy">
           <span class="galeria-legenda">Projeto Comunicação</span>
         </button>
       </div>
       <div class="galeria-item">
         <button class="galeria-botao" type="button" onclick="abrirModal(4)" aria-label="Abrir projeto Interface">
-          <img src="https://i.imgur.com/x2Ado3J.png" alt="Projeto Interface">
+          <img src="https://i.imgur.com/x2Ado3J.png" alt="Projeto Interface" loading="lazy">
           <span class="galeria-legenda">Projeto Interface</span>
         </button>
       </div>
       <div class="galeria-item">
         <button class="galeria-botao" type="button" onclick="abrirModal(5)" aria-label="Abrir projeto Visual">
-          <img src="https://imgur.com/Lob2i9j.png" alt="Projeto Visual">
+          <img src="https://imgur.com/Lob2i9j.png" alt="Projeto Visual" loading="lazy">
           <span class="galeria-legenda">Projeto Visual</span>
         </button>
       </div>
@@ -660,7 +789,8 @@
   <section id="contato">
     <h2>Entre em Contato</h2>
     <div class="card-interativo">
-      <h3>Solicite um Orçamento</h3>
+      <h3>Vamos conversar sobre seu projeto?</h3>
+      <p>Conte brevemente o que você precisa. A primeira conversa ajuda a encontrar a solução mais adequada para o seu momento.</p>
       <form class="form-contato" onsubmit="enviarMensagem(event)">
         <div class="form-grupo">
           <label for="nome">Seu Nome:</label>
@@ -678,14 +808,27 @@
       </form>
     </div>
   </section>
+
+  <section class="cta-final" aria-label="Chamada para orçamento">
+    <h2>Pronto para dar forma à sua próxima ideia?</h2>
+    <p>Envie os detalhes e vamos avaliar juntos o melhor próximo passo.</p>
+    <a class="btn-hero" href="#contato">Solicitar orçamento <i class="fa-solid fa-arrow-right"></i></a>
+  </section>
   <!-- Modal sobreposto -->
   <div id="meuModal" class="modal" onclick="fecharModalFora(event)">
     <button class="modal-fechar" type="button" onclick="fecharModal()" aria-label="Fechar imagem">&times;</button>
-    <img class="modal-conteudo" id="imagemExpandida" alt="Imagem ampliada">
+    <img class="modal-conteudo" id="imagemExpandida" alt="Imagem ampliada" ondblclick="alternarZoom()">
+    <span class="modal-legenda" id="modalLegenda"></span>
     <div class="modal-navegacao">
       <button type="button" onclick="mudarImagem(-1)" aria-label="Imagem anterior">&#8249;</button>
       <button type="button" onclick="mudarImagem(1)" aria-label="Próxima imagem">&#8250;</button>
     </div>
+    <div class="modal-painel" aria-label="Controles de zoom">
+      <button type="button" onclick="ajustarZoom(-0.2)" aria-label="Diminuir zoom">−</button>
+      <button type="button" onclick="resetarZoom()" aria-label="Resetar zoom">100%</button>
+      <button type="button" onclick="ajustarZoom(0.2)" aria-label="Aumentar zoom">+</button>
+    </div>
+    <div class="modal-miniaturas" id="modalMiniaturas" aria-label="Selecionar projeto"></div>
     <span class="modal-contador" id="modalContador" aria-live="polite"></span>
   </div>
 
@@ -714,14 +857,36 @@
     const modal = document.getElementById('meuModal');
     const imagemExpandida = document.getElementById('imagemExpandida');
     const modalContador = document.getElementById('modalContador');
+    const modalLegenda = document.getElementById('modalLegenda');
+    const modalMiniaturas = document.getElementById('modalMiniaturas');
     const imagensGaleria = Array.from(document.querySelectorAll('.galeria-botao img'));
     let imagemAtual = 0;
+    let nivelZoom = 1;
+    let toqueInicialX = 0;
+
+    imagensGaleria.forEach((imagem, indice) => {
+      const miniatura = document.createElement('button');
+      miniatura.type = 'button';
+      miniatura.className = 'modal-miniatura';
+      miniatura.setAttribute('aria-label', `Abrir ${imagem.alt}`);
+      miniatura.innerHTML = `<img src="${imagem.src}" alt="">`;
+      miniatura.addEventListener('click', () => {
+        imagemAtual = indice;
+        atualizarModal();
+      });
+      modalMiniaturas.appendChild(miniatura);
+    });
 
     function atualizarModal() {
       const imagem = imagensGaleria[imagemAtual];
       imagemExpandida.src = imagem.src;
       imagemExpandida.alt = imagem.alt;
+      modalLegenda.textContent = imagem.alt;
       modalContador.textContent = `${imagemAtual + 1} / ${imagensGaleria.length}`;
+      document.querySelectorAll('.modal-miniatura').forEach((miniatura, indice) => {
+        miniatura.classList.toggle('ativa', indice === imagemAtual);
+      });
+      resetarZoom();
     }
 
     function abrirModal(indice) {
@@ -739,6 +904,23 @@
     function fecharModal() {
       modal.style.display = 'none';
       document.body.style.overflow = 'auto'; 
+      resetarZoom();
+    }
+
+    function ajustarZoom(valor) {
+      nivelZoom = Math.min(2.5, Math.max(1, nivelZoom + valor));
+      imagemExpandida.style.transform = `scale(${nivelZoom})`;
+      imagemExpandida.style.cursor = nivelZoom > 1 ? 'zoom-out' : 'zoom-in';
+    }
+
+    function resetarZoom() {
+      nivelZoom = 1;
+      imagemExpandida.style.transform = 'scale(1)';
+      imagemExpandida.style.cursor = 'zoom-in';
+    }
+
+    function alternarZoom() {
+      ajustarZoom(nivelZoom > 1 ? -1.5 : 0.8);
     }
 
     function fecharModalFora(event) {
@@ -755,8 +937,24 @@
         mudarImagem(-1);
       } else if (event.key === 'ArrowRight') {
         mudarImagem(1);
+      } else if (event.key === '+' || event.key === '=') {
+        ajustarZoom(0.2);
+      } else if (event.key === '-') {
+        ajustarZoom(-0.2);
+      } else if (event.key === '0') {
+        resetarZoom();
       }
     });
+
+    modal.addEventListener('touchstart', (event) => {
+      toqueInicialX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modal.addEventListener('touchend', (event) => {
+      const distancia = event.changedTouches[0].screenX - toqueInicialX;
+      if (Math.abs(distancia) < 50) return;
+      mudarImagem(distancia > 0 ? -1 : 1);
+    }, { passive: true });
 
     // Função Accordion para FAQ
     function toggleFaq(botao) {
